@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+
+
+
+           <record id="mrp_view_product_pricelist_form_inherited" model="ir.ui.view">
+                <field name="name">product.pricelist.form.inherit</field>
+                <field name="model">product.pricelist</field>
+               <field name="inherit_id" ref="product.product_pricelist_view" />
+                <field name="arch" type="xml">
+                    <xpath expr="//group[@name='pricelist_availability']" position="after">
+                         <label for="is_mrp"/>
+                        <field name="is_mrp"/>
+                    </xpath>
+                </field>
+        </record>
+
+
+                <record id="mrp_view_product_pricelist_item_form_inherited" model="ir.ui.view">
+            <field name="name">product.pricelist.item.form.inherit</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='pricelist_rule_base']" position="inside">
+                    <field name="is_mrp"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_line_product_mrp_view" model="ir.ui.view">
+            <field name="name">inherited.sale.order.form.view</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page/field[@name='order_line']/form/group/group/field[@name='product_uom_readonly']"
+                       position="after">
+                    <field name="product_mrp" domain="[('product_id', '=', product_id),('name','!=',0)]" context="{'show_mrp':1}" options="{'no_create': True,'always_reload': True}"/>
+                    <field name="qty_available"/>
+                </xpath>
+                <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_uom_qty']"
+                       position="before">
+                    <field name="product_mrp" domain="[('product_id', '=', product_id),('name','!=',0)]" context="{'show_mrp':1,}" options="{'no_create': True,'always_reload': True}"/>
+                    <field name="qty_available"/>
+                </xpath>
+                <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_id']"
+                       position="attributes">
+                    <attribute name="context">
+                        {
+                            'partner_id': parent.partner_id,
+                            'quantity': product_uom_qty,
+                            'pricelist': parent.pricelist_id,
+                            'uom':product_uom,
+                            'company_id': parent.company_id,
+                            'default_lst_price': price_unit,
+                            'default_description_sale': name,
+                            'product_mrp': product_mrp
+                        }
+                    </attribute>
+                </xpath>
+                <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_template_id']"
+                       position="attributes">
+                    <attribute name="context">
+                        {
+                            'partner_id': parent.partner_id,
+                            'quantity': product_uom_qty,
+                            'pricelist': parent.pricelist_id,
+                            'uom':product_uom,
+                            'company_id': parent.company_id,
+                            'default_list_price': price_unit,
+                            'default_description_sale': name,
+                             'product_mrp': product_mrp
+                        }
+                    </attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

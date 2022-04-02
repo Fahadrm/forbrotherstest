@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="preview_sale_order_view_form" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.event.sale</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='preview_sale_order']" position="attributes">
+                <attribute name="groups">website.group_website_designer</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+     <record id="preview_account_move_view_form" model="ir.ui.view">
+        <field name="name">account.move.inherit.event.sale</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='preview_invoice']" position="attributes">
+                <attribute name="groups">website.group_website_designer</attribute>
+            </xpath>
+        </field>
+    </record>
+
+  </data>
+</odoo>

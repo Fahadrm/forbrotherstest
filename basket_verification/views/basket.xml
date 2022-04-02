@@ -1,0 +1,100 @@
+<odoo>
+  <data>
+
+       <record model="ir.ui.view" id="stock_basket_tree">
+              <field name="name">stock_basket_tree</field>
+              <field name="model">stock.basket</field>
+              <field name="arch" type="xml">
+                  <tree>
+                      <field name="name" />
+                      <field name="status"/>
+                      <field name="picking_id" invisible="1"/>
+                  </tree>
+              </field>
+          </record>
+
+
+
+          <record model="ir.ui.view" id="stock_basket_form">
+              <field name="name">stock_basket_form</field>
+              <field name="model">stock.basket</field>
+              <field name="arch" type="xml">
+                  <form>
+            <!--             <header>-->
+            <!--                    <field name="status" widget="statusbar" statusbar_visible="vacant,occupy"/>-->
+            <!--                </header>-->
+                      <sheet>
+                          <group>
+                              <field name="name" />
+                              <field name="status"/>
+                              <field name="picking_id" invisible="1"/>
+                          </group>
+                      </sheet>
+                  </form>
+              </field>
+          </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="basket_action_window">
+      <field name="name">Basket</field>
+      <field name="res_model">stock.basket</field>
+      <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create Basket
+            </p>
+        </field>
+    </record>
+
+      <menuitem name="Basket" id="basket_submenu" parent="stock.menu_stock_config_settings" action="basket_action_window"/>
+
+
+<!-- Bracode print -->
+<record id="report_basket_barcode" model="ir.actions.report">
+    <field name="name">Basket Barcode (PDF)</field>
+    <field name="model">stock.basket</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">basket_verification.report_basketbarcode</field>
+    <field name="report_file">basket_verification.report_basketbarcode</field>
+    <field name="print_report_name">'Basket barcode - %s' % (object.name)</field>
+    <field name="binding_model_id" ref="basket_verification.model_stock_basket"/>
+    <field name="binding_type">report</field>
+</record>
+
+
+<template id="report_simple_basekt_barcode">
+    <div style="width: 32%; display: inline-table; height: 10rem;">
+        <table class="table table-bordered mb-0" style="border: 2px solid black;">
+            <!-- <tr>
+                <th class="table-active text-left" style="height: 4rem;">
+                    <strong t-field="basket.name"/>
+                </th>
+            </tr> -->
+            <tr>
+                <td class="text-center align-middle" style="height: 6rem;">
+                    <t t-if="basket.name">
+                        <img alt="Barcode" t-if="len(basket.name) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(basket.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                        <img alt="Barcode" t-elif="len(basket.name) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', quote_plus(basket.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                        <img alt="Barcode" t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(basket.name or ''), 600, 150)" style="width:100%;height:4rem"/>
+                        <span t-field="basket.name"/>
+                    </t>
+                    <t t-else=""><span class="text-muted">No barcode available</span></t>
+                </td>
+            </tr>
+        </table>
+    </div>
+</template>
+<template id="report_basketbarcode">
+    <t t-call="web.basic_layout">
+        <div class="page">
+            <t t-foreach="docs" t-as="basket">
+                <t t-call="basket_verification.report_simple_basekt_barcode">
+                    <t t-set="basket" t-value="basket"/>
+                </t>
+            </t>
+        </div>
+    </t>
+</template>
+
+  </data>
+</odoo>

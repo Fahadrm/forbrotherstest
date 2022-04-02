@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+<!-- <t t-name="WidgetWebsiteButtonIcon" t-inherit="website.WidgetWebsiteButtonIcon" t-inherit-mode="extension" owl="1">-->
+<!--      &lt;!&ndash;Override&ndash;&gt;-->
+<!--     <xpath expr="//button[hasclass('oe_stat_button')]" position="replace">-->
+<!--         -->
+<!--     </xpath>-->
+
+
+<!-- </t>-->
+</templates>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_basket,basket_verification.stock_basket,model_stock_basket,,1,1,1,1
+access_basket_verification,basket_verification.basket_verification,model_basket_verification,,1,1,1,1
+
+

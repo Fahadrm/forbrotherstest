@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_user_week_activity,user_week_activity.week_days,model_week_days,,1,1,1,1
+access_user_deliver_week_activity,user_week_activity.deliver_week_days,model_deliver_week_days,,1,1,1,1

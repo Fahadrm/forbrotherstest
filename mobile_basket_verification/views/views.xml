@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="barcode_verification_form_view" model="ir.actions.act_window">
+        <field name="name">BarcodeVerification</field>
+        <field name="res_model">basket.verification</field>
+        <field name="view_mode">form</field>
+        <!-- <field name="domain">[]</field> -->
+        <field name="view_id" ref="basket_verification.basket_setup_action_window_wizard_all"/>
+        <!-- <field name="context">{}</field> -->
+    </record>
+
+
+
+          
+
+
+    <menuitem id="basket_verification_client_action_menu" name="Basket Verification"
+                  action="basket_verification_client_action"
+                  web_icon="mobile_basket_verification,static/src/images/shopping_icon.png"
+                  sequence="51"/>
+  </data>
+</odoo>

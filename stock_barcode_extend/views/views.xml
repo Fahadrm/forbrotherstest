@@ -1,0 +1,75 @@
+<odoo>
+  <data>
+
+
+            <record id="mrp_view_stock_move_line_product_inherited" model="ir.ui.view">
+                <field name="name">stock.move.line.form.inherit</field>
+                <field name="model">stock.move.line</field>
+               <field name="inherit_id" ref="stock_barcode.stock_move_line_product_selector" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='tracking']" position="after">
+                        <div class="row">
+                        <div class="col-12 col-md-6 my-2 d-flex align-items-baseline">
+                            <i class="fa fa-fw fa-lg fa-archive mr-3" title="MRP"/>
+                            <field name="product_mrp" placeholder="MRP" domain="[('product_id', '=', product_id),('name','!=',0),('product_id', '!=', False)]"/>
+                        </div>
+                        </div>
+                         <div class="row">
+                        <div class="col-12 col-md-6 my-2 d-flex align-items-baseline">
+                            <i class="fa fa-fw fa-lg fa-archive mr-3" title="Locations"/>
+                            <field name="customer_locations" placeholder="Locations"/>
+                        </div>
+                         </div>
+
+                              <div class="row">
+
+                             <div class="col-12 col-md-6 my-2 d-flex align-items-baseline">
+                            <i class="fa fa-fw fa-lg fa-archive mr-3" title="Expiration Date"/>
+                            <field name="expiration_date" readonly="0" placeholder="Expiration Date"/>
+                        </div>
+                        </div>
+                              
+                    </xpath>
+                </field>
+            </record>
+
+
+
+
+
+       <record id="extended_stock_inventory_line_barcode" model="ir.ui.view">
+        <field name="name">stock.inventory.barcode</field>
+        <field name="model">stock.inventory.line</field>
+        <field name="inherit_id" ref="stock_barcode.stock_inventory_line_barcode"/>
+        <field name="arch" type="xml">
+
+             <xpath expr="//field[@name='product_tracking']" position="after">
+                        <div class="row">
+                        <div class="col-12 col-md-6 my-2 d-flex align-items-baseline">
+                            <i class="fa fa-fw fa-lg fa-archive mr-3" title="MRP"/>
+                            <field name="product_mrp" placeholder="MRP" domain="[('product_id', '=', product_id),('name','!=',0),('product_id', '!=', False),]"/>
+                        </div>
+                        </div>
+                         <div class="row">
+                        <div class="col-12 col-md-6 my-2 d-flex align-items-baseline">
+                            <i class="fa fa-fw fa-lg fa-archive mr-3" title="Locations"/>
+                            <field name="customer_locations" placeholder="Locations"/>
+                        </div>
+                         </div>
+
+<!--                              <div class="row">-->
+
+<!--                             <div class="col-12 col-md-6 my-2 d-flex align-items-baseline">-->
+<!--                            <i class="fa fa-fw fa-lg fa-archive mr-3" title="Expiration Date"/>-->
+<!--                            <field name="expiration_date" readonly="0" placeholder="Expiration Date"/>-->
+<!--                        </div>-->
+<!--                        </div>-->
+                    </xpath>
+
+        </field>
+    </record>
+
+
+
+  </data>
+</odoo>

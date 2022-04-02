@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <templates id="template" inherit_id="stock_barcode.stock_barcode_lines_template" xml:space="preserve">-->
+<templates id="template" >
+<!--  <t t-extend="stock_barcode_lines_template">-->
+<!--   -->
+
+<!--  </t>-->
+  <t t-extend="stock_barcode_lines_template">
+
+     <t t-jquery="div[class='o_barcode_line_details flex-grow-1 flex-column flex-nowrap']"
+      t-operation="append">
+      <div  class="">
+        <i class="fa fa-shopping-basket"></i>
+         <strong>Basket:</strong>
+          <t t-if="line.basket_id">
+              <t t-esc="line.basket_id[1]"/>
+          </t>
+
+      </div>
+    </t>
+    <t t-jquery="div[class='o_barcode_line list-group-item d-flex flex-row flex-nowrap']"
+      t-operation="append">
+      <div class="o_barcode_pic position-relative text-center mt-2 mb-1">
+          <!-- <i class="fa fa-5x mx-auto fa-exclamation-triangle text-white d-none"/> -->
+          <!-- <t t-if='widget.mobileMethods.scanBarcode'> -->
+          <img class="o_barcode_icon_basket barcode_allocation" src="/stock_barcode/static/img/barcode.svg" alt="Barcode" height="40px"/>
+          <!-- </t> -->
+
+          <!-- <div class="o_stock_mobile_barcode"/> -->
+          <!-- <t t-if='widget.mobileMethods.scanBarcode'> -->
+          <!-- <div class="o_stock_mobile_barcode"/> -->
+
+           <!-- Used to open the device scanner -->
+          <!-- <span> Tap to scan</span> -->
+        <!-- </t> -->
+      </div>
+  </t>
+  </t>
+  <t t-extend="stock_barcode_summary_template">
+    <t t-jquery="div[class='o_barcode_product_line d-flex justify-content-between align-items-center']"
+      t-operation="append">
+      <div class="basket_barcode d-flex" style="float:right;width:400px;margin-right:200px;">
+        <span>Basket </span>
+        <input type="text" class="o_field_char basket_barcode_input" readonly="1" style="width:100px"/>
+        <button class="btn btn-primary add_basket">Allocate</button>
+      </div>
+    </t>
+  </t>
+</templates>
+<!-- <templates id="template" inherit_id="stock_barcode.stock_barcode_summary_template" xml:space="preserve">
+
+  <t t-extend="stock_barcode_summary_template">
+    <t t-jquery="div[class='o_barcode_product_line d-flex justify-content-between align-items-center']"
+      t-operation="append">
+      <div class="basket_barcode d-flex" style="float:right;width:400px;margin-right:200px;">
+      <span>Basket </span>
+      <input type="text" class="o_field_char basket_barcode_input" style="width:100px"/>
+      <button class="btn btn-primary add_basket">Add</button>
+    </div>
+    </t>
+  </t>
+</templates>-->

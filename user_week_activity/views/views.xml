@@ -1,0 +1,30 @@
+<odoo>
+  <data>
+           <record id="week_user_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.week.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <field name="category_id" position="after">
+                    <field name="week_days" widget="many2many_tags"/>
+                    <field name="delivery_week_days" widget="many2many_tags"/>
+
+                </field>
+            </field>
+        </record>
+
+          <record id="ir_cron_week_user_reminder" model="ir.cron">
+       <field name="name">Week Activity</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">model.process_week_days()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+              <field name="doall">1</field>
+<!--              <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 09:00:00')" />-->
+<!--        <field name="nextcall" eval="(DateTime.now() + timedelta(hours=2)).strftime('%Y-%m-%d %H:%M:%S')"/>-->
+    </record>
+  </data>
+</odoo>

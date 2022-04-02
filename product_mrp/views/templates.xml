@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+
+         <record id="stock_mrp_inventory_inherited_form_view" model="ir.ui.view">
+          <field name="name">stock.inventory_tree.inherited.form.view</field>
+          <field name="model">stock.inventory</field>
+          <field name="inherit_id" ref="stock.view_inventory_form"/>
+          <field name="arch" type="xml">
+              <xpath expr="//field[@name='product_ids']" position="after">
+                    <field name="duplicate_product"/>
+              </xpath>
+          </field>
+         </record>
+
+
+
+       <record id="stock_mrp_inventory_line_tree_inherited_form_view" model="ir.ui.view">
+          <field name="name">stock.inventory.line.tree.inherited.form.view</field>
+          <field name="model">stock.inventory.line</field>
+          <field name="inherit_id" ref="stock.stock_inventory_line_tree"/>
+          <field name="arch" type="xml">
+              <xpath expr="//field[@name='product_id']" position="after">
+
+                    <field name="mrp" invisible="1"/>
+                   <field name="product_mrp" domain="[('product_id', '=', product_id),('name','!=',0)]"/>
+                   <field name="customer_locations"/>
+
+              </xpath>
+<!--                <xpath expr="//field[@name='product_id']" position="attributes">-->
+<!--                    <attribute name="context">-->
+<!--                        {-->
+<!--                            'product_mrp': product_mrp,-->
+<!--                            'customer_locations':customer_locations-->
+<!--                        }-->
+<!--                    </attribute>-->
+<!--                </xpath>-->
+
+          </field>
+    </record>
+
+
+    </data>
+</odoo>

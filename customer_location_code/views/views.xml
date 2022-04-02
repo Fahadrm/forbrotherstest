@@ -1,0 +1,145 @@
+<odoo>
+    <data>
+
+
+
+                <record id="customer_location_tree_view" model="ir.ui.view">
+            <field name="name">location.code.tree.view</field>
+            <field name="model">location.code</field>
+            <field name="arch" type="xml">
+                <tree string="Location">
+                    <field name="name"/>
+                    <field name="product_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="customer_location_form_view" model="ir.ui.view">
+            <field name="name">location.code.form.view</field>
+            <field name="model">location.code</field>
+            <field name="arch" type="xml">
+                <form string="Location">
+                    <group>
+                        <field name="name"/>
+                        <field name="product_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_location_code" model="ir.actions.act_window">
+            <field name="name">Locations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">location.code</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Location
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Locations"
+                  id="menu_location_code"
+                  sequence="10"
+                  action="action_location_code"
+                  parent="contacts.menu_localisation"/>
+
+
+        <record id="customer_code_tree_view" model="ir.ui.view">
+            <field name="name">customer.code.tree.view</field>
+            <field name="model">customer.code</field>
+            <field name="arch" type="xml">
+                <tree string="Customer Code">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="customer_code_form_view" model="ir.ui.view">
+            <field name="name">customer.code.form.view</field>
+            <field name="model">customer.code</field>
+            <field name="arch" type="xml">
+                <form string="Customer Code">
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_customer_code" model="ir.actions.act_window">
+            <field name="name">Customer Code</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">customer.code</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Customer Code
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Customer Code"
+                  id="menu_customer_code"
+                  sequence="10"
+                  action="action_customer_code"
+                  parent="contacts.menu_localisation"/>
+
+
+
+
+
+           <record id="product_customerinfo_tree_view" model="ir.ui.view">
+            <field name="name">product.customerinfo.tree.view</field>
+            <field name="model">product.customerinfo</field>
+            <field name="arch" type="xml">
+                <tree string="Customer Information" editable='bottom'>
+                    <field name="name"/>
+                    <field name="product_code"/>
+<!--                    <field name="product_name" optional="hide"/>-->
+                    <field name="product_id" optional="hide"
+                        invisible="context.get('product_template_invisible_variant', False)"
+                        groups="product.group_product_variant"/>
+                    <field name="product_tmpl_id" string="Product" readonly="1"
+                        invisible="context.get('visible_product_tmpl_id', True)"/>
+                    <field name="currency_id" groups="base.group_multi_currency"/>
+                    <field name="company_id" optional="hide" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="product_suppliercustomerinfo_type_action" model="ir.actions.act_window">
+        <field name="name">Customer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.customerinfo</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{'visible_product_tmpl_id':False}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Customer
+            </p><p>
+
+            </p>
+        </field>
+    </record>
+
+
+         <record id="view_product_customer_inherit" model="ir.ui.view">
+            <field name="name">product.template.supplier.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <field name="categ_id" position="after">
+                         <field name="product_location_ids"/>
+                </field>
+
+                <group name="sale" position="before">
+                    <field name="customer_ids" context="{'default_product_tmpl_id':context.get('product_tmpl_id',active_id), 'product_template_invisible_variant': True, 'tree_view_ref':'purchasecustomer_location_code.product_customerinfo_tree_view'}" nolabel="1"/>
+                </group>
+            </field>
+         </record>
+    </data>
+</odoo>

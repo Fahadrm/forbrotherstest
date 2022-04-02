@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_customer_code,customer_location_code.customer_code,model_customer_code,base.group_user,1,1,1,1
+access_customer_extra_customer_code,customer_location_code.extra_customer_code,model_customer_code,base.group_user,1,1,1,1
+access_customer_location_code,customer_location_code.location_code,model_location_code,,1,1,1,1
+access_customer_product_customerinfo,customer_location_code.product_customerinfo,model_product_customerinfo,,1,1,1,1

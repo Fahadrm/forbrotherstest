@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+     <record id="view_mrp_product_report_form" model="ir.ui.view">
+        <field name="name">stock.mrp.product.report.tree</field>
+        <field name="model">stock.mrp.product.report</field>
+        <field name="arch" type="xml">
+
+            <form string="MRP">
+                 <group>
+
+                <field name="name"/>
+                <field name="product_id"/>
+                 </group>
+
+            </form>
+        </field>
+     </record>
+
+
+    <record id="view_mrp_product_report_tree" model="ir.ui.view">
+        <field name="name">stock.mrp.product.report.tree</field>
+        <field name="model">stock.mrp.product.report</field>
+        <field name="arch" type="xml">
+
+            <tree string="MRP">
+                <field name="name"/>
+<!--                <field name="sl_no"/>-->
+                <field name="move_id"/>
+                 <field name="move_line_id"/>
+                <field name="product_id"/>
+                <field name="company_id"/>
+                <field name="mrp"/>
+                <field name="lot_id"/>
+                 <field name="qty"/>
+            </tree>
+        </field>
+    </record>
+    <record id="mrp_view_search" model="ir.ui.view">
+      <field name="name">mrp.search</field>
+      <field name="model">stock.mrp.product.report</field>
+      <field name="arch" type="xml">
+        <search string="">
+          <field name="name"/>
+          <!-- <filter name="" string="" domain="[('', '=', ), ]"/> -->
+          <group string="Group By">
+            <filter name="name" string="MRP" context="{'group_by':'name'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+         <record id="action_stock_mrp_all" model="ir.actions.act_window">
+            <field name="name">MRP</field>
+            <field name="res_model">stock.mrp.product.report</field>
+             <field name="view_mode">tree,form,kanban</field>
+             <field name="search_view_id" ref="mrp_view_search"/>
+            <field name="target"></field>
+        </record>
+
+        <menuitem action="action_stock_mrp_all" id="menu_stock_mrp_all" parent="sale.menu_sale_config"
+                  sequence="2"/>
+
+</odoo>

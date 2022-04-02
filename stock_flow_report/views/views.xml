@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <record id="report_stock_flow_report_wizard_view" model="ir.ui.view">
+            <field name="name">Stock Flow Report</field>
+            <field name="model">stock.flow.report</field>
+            <field name="arch" type="xml">
+                <form string="Stock Flow Report">
+                    <group col="4">
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <field name="company_id"/>
+                    </group>
+
+                      <group col="4">
+                        <field name="product_id"/>
+                        <field name="category_id"/>
+                          <field name="brand_id"/>
+                    </group>
+
+                    <footer>
+                        <button name="export_xls" type="object" default_focus="1"
+                                string="Excel Print" class="oe_highlight"/>
+                        or
+                        <button name="check_report" string="PDF Print" type="object"
+                                class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="report_action_stock_flow_report_wizard" model="ir.actions.act_window">
+            <field name="name">Stock Flow Report</field>
+            <field name="res_model">stock.flow.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="report_stock_flow_report_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_stock_flow_report" name="Stock Flow Report"
+                  parent="stock.menu_warehouse_report" action="report_action_stock_flow_report_wizard"/>
+
+
+         <report
+            id="action_stock_flow_report"
+            model="stock.picking"
+            string="Stock Flow Report"
+            report_type="xlsx"
+            name="stock_flow_report.action_stock_flow_report_xls"
+            file="stock_flow_report.action_stock_flow_report_xls"
+
+        />
+
+    </data>
+</odoo>

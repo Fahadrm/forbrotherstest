@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="week_fri" model="week.days">
+            <field name="name">Friday</field>
+        </record>
+
+        <record id="week_thu" model="week.days">
+            <field name="name">Thursday</field>
+        </record>
+
+        <record id="week_wed" model="week.days">
+            <field name="name">Wednesday</field>
+        </record>
+
+        <record id="week_tue" model="week.days">
+            <field name="name">Tuesday</field>
+        </record>
+
+        <record id="week_mon" model="week.days">
+            <field name="name">Monday</field>
+
+        </record>
+
+        <record id="week_sun" model="week.days">
+            <field name="name">Sunday</field>
+
+        </record>
+
+        <record id="week_sat" model="week.days">
+            <field name="name">Saturday</field>
+        </record>
+
+
+
+    <record id="deliver_week_fri" model="deliver.week.days">
+            <field name="name">Friday</field>
+        </record>
+
+        <record id="deliver_week_thu" model="deliver.week.days">
+            <field name="name">Thursday</field>
+        </record>
+
+        <record id="deliver_week_wed" model="deliver.week.days">
+            <field name="name">Wednesday</field>
+        </record>
+
+        <record id="deliver_week_tue" model="deliver.week.days">
+            <field name="name">Tuesday</field>
+        </record>
+
+        <record id="deliver_week_mon" model="deliver.week.days">
+            <field name="name">Monday</field>
+
+        </record>
+
+        <record id="deliver_week_sun" model="deliver.week.days">
+            <field name="name">Sunday</field>
+
+        </record>
+
+        <record id="deliver_week_sat" model="deliver.week.days">
+            <field name="name">Saturday</field>
+        </record>
+
+
+</odoo>

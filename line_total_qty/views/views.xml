@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+      <record id="qty_total_sale_order_form_inherited" model="ir.ui.view">
+            <field name="name">total.sale_order.form.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="attributes">
+                    <attribute name="sum">Total</attribute>
+                 </xpath>
+
+            </field>
+       </record>
+
+     <record id="qty_total_purchase_order_form_inherited" model="ir.ui.view">
+            <field name="name">total.purchase_order.form.inherited</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+
+                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_qty']" position="attributes">
+                    <attribute name="sum">Total</attribute>
+                 </xpath>
+
+            </field>
+       </record>
+
+     <record id="qty_total_move_form_inherited" model="ir.ui.view">
+            <field name="name">total.move.form.inherited</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+
+                 <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='quantity']" position="attributes">
+                    <attribute name="sum">Total</attribute>
+                 </xpath>
+
+            </field>
+       </record>
+  </data>
+</odoo>

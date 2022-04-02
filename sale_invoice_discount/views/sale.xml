@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <record id="discount_sale_order_form_inherited" model="ir.ui.view">
+            <field name="name">ks.discount.sale_order.form.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+<!--                <xpath expr="//field[@name='order_line']//field[@name='discount']" position="after">-->
+<!--                      <label for="discount_amount" groups="product.group_discount_per_so_line"/>-->
+<!--                    <div name="discount_amount" groups="product.group_discount_per_so_line">-->
+<!--                        <field name="discount_amount" class="oe_inline"/>-->
+<!--                    </div>-->
+<!--&lt;!&ndash;                    <field name="discount_amount" string="Disc.(amt)"/>&ndash;&gt;-->
+<!--                 </xpath>-->
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="after">
+
+                    <field name="discount_amount" string="Disc.(amt)"/>
+                 </xpath>
+
+                <xpath expr="//form/sheet/notebook/page/group" position="before">
+                    <div class="container">
+                        <label for="global_discount_type" string="Universal Discount Type:" />
+                        <field name="global_discount_type" class="oe_inline"/>
+                    </div>
+                    <div class="container">
+                        <label for="global_discount_rate" string="Universal Discount:"/>
+                        <field name="global_discount_rate" class="oe_inline"/>
+                    </div>
+                </xpath>
+                <field name="amount_untaxed" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="amount_tax" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <xpath expr="//field[@name='amount_tax']" position="after">
+                     <field name="is_enabled_discount" invisible="1"/>
+                    <field name="amount_discount" invisible="1" />
+                    <field name="amount_undiscounted" string="Amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_discount" string="Discount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

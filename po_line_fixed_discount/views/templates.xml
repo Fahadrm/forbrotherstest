@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+<!--        <template id="report_purchaseorder_document" inherit_id="purchase.report_purchaseorder_document">-->
+<!--            <xpath expr="//table[1]/thead/tr//th[last()]" position="before">-->
+<!--                <th class="text-right">-->
+<!--                    <strong>Disc. (Amt)</strong>-->
+<!--                </th>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//td[span[@t-field='line.price_subtotal']]" position="before">-->
+<!--                <td class="text-right">-->
+<!--                    <span t-field="line.fixed_discount"/>-->
+<!--                </td>-->
+<!--            </xpath>-->
+<!--        </template>-->
+    </data>
+</odoo>

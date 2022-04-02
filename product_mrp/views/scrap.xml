@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_scrap_view_form2_product_mrp" model="ir.ui.view">
+        <field name="name">stock.scrap.view.form2.inherit.mrp</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_form_view2"/>
+        <field name="arch" type="xml">
+            <field name="owner_id" position="after">
+                <field name="product_mrp" domain="[('product_id', '=', product_id),('name','!=',0)]"/>
+            </field>
+        </field>
+    </record>
+    <record id="stock_scrap_view_form_mrp_product_mrp" model="ir.ui.view">
+        <field name="name">stock.scrap.view.form.inherit.mrp</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_form_view"/>
+        <field name="arch" type="xml">
+            <field name="owner_id" position="after">
+                <field name="product_mrp" domain="[('product_id', '=', product_id),('name','!=',0)]"/>
+            </field>
+        </field>
+    </record>
+</odoo>

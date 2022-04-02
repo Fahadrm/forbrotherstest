@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+
+        <record id="stock_picking_barcode_extended" model="ir.ui.view">
+        <field name="name">stock.picking.form.view.barcode</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock_barcode.stock_picking_barcode"/>
+            <field name="arch" type="xml">
+
+                  <xpath expr="//field[@name='move_lines']/tree/field[@name='state']" position="after">
+                      <field name="product_mrp" domain="[('product_id', '=', product_id),('name','!=',0),('product_id', '!=', False)]"/>
+                      <field name="customer_locations"/>
+                  </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+
+           <record id="deliver_week_days_form" model="ir.ui.view">
+            <field name="name">week.days.form</field>
+            <field name="model">deliver.week.days</field>
+            <field name="arch" type="xml">
+
+
+                <form string="Week">
+                    <sheet>
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </sheet>
+                </form>
+            </field>
+         </record>
+
+
+
+         <record id="action_deliver_week_days_form" model="ir.actions.act_window">
+            <field name="name">Deliver Week Days</field>
+            <field name="res_model">deliver.week.days</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+<!--            <field name="search_view_id" ref="view_razorpay_payment_rule_filter"/>-->
+        </record>
+
+         <menuitem
+                id="menu_deliver_weekdays_form"
+                action="action_deliver_week_days_form"
+                name="Week Days"
+                parent="sale.menu_sale_config"
+                groups="base.group_no_one"
+                sequence="15"/>
+
+
+
+
+
+
+
+               <record id="week_days_form" model="ir.ui.view">
+            <field name="name">week.days.form</field>
+            <field name="model">week.days</field>
+            <field name="arch" type="xml">
+
+
+                <form string="Week">
+                    <sheet>
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </sheet>
+                </form>
+            </field>
+         </record>
+
+
+
+         <record id="action_week_days_form" model="ir.actions.act_window">
+            <field name="name">Week Days</field>
+            <field name="res_model">week.days</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+<!--            <field name="search_view_id" ref="view_razorpay_payment_rule_filter"/>-->
+        </record>
+
+         <menuitem
+                id="menu_weekdays_form"
+                action="action_week_days_form"
+                name="Week Days"
+                parent="sale.menu_sale_config"
+                sequence="15"/>
+    </data>
+</odoo>
