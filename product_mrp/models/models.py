@@ -47,7 +47,7 @@ class StockMoveLine(models.Model):
         res = super(StockMoveLine, self).create(vals_list)
         for i in res:
             exsiting_mrp_id = self.env['stock.mrp.product.report'].search([('product_id', '=', i.product_id.id),
-                                                                           ('id', '=', i.product_mrp.id)])
+                                                                           ('name', '=', i.product_mrp.name)])
 
             if exsiting_mrp_id:
                 # i.write(())
@@ -97,7 +97,7 @@ class StockMoveLine(models.Model):
         for i in self:
             if 'qty_done' in vals:
                 exsiting_mrp_id = self.env['stock.mrp.product.report'].search([('product_id', '=', i.product_id.id),
-                                                                               ('id', '=', i.product_mrp.id)])
+                                                                               ('name', '=', i.product_mrp.name)])
 
                 if exsiting_mrp_id:
                     # i.write(())

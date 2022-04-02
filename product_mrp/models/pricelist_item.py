@@ -270,6 +270,8 @@ class StockRuleInherit(models.Model):
         res = super(StockRuleInherit, self)._get_stock_move_values(product_id, product_qty, product_uom,
                                                                        location_id,
                                                                        name, origin, values, group_id)
+
+
         res['product_mrp'] = group_id.get('product_mrp', False)
 
 
